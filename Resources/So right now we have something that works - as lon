@@ -1,0 +1,11 @@
+So right now we have something that works - as long as we have a relation between the symbols and the feature terms used in the classifications, that allows a supervised learning (inductive in our case).
+
+For the next (and proably final) step of the thesis, I am looking toward something more oriented on the possibilities of the semiologic representation. The approach so far is leaded by the traditional, idealist (Aristotle, Kant) western philosophy. I will just quote wikipedia which has a relevant example for our case: "According to this view, there is something like 'the real chair', which exists in some external reality and corresponds roughly with a concept in human thought, chair, to which the linguistic word "chair" refers."
+
+
+Part of the code that might be unecessary
+/*if(D.solved){
+			List<Message> toSend = new LinkedList<>();
+			toSend.add(new Forget(new Sign(D.toString())));
+			sendMessages(toSend);
+		}*/
