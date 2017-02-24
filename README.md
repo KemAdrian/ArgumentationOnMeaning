@@ -1,4 +1,4 @@
-# Two-agent system arguing about meaning in order to build contrast sets over heterogeneous NOOS datasets
+# Two-agent System Arguing about the Meaning in order to Build Contrast Sets over Heterogeneous NOOS Datasets
 
 A framework based on the [FTL](https://github.com/santiontanon/fterm) library. Two agents build contrast sets (knowledge representations associated to a vocabulary) that is initially unable to guarantee mutual intelligibility. Through argumentation over the concepts that compose the contrast set, the agents build a new version of their initial contrast set. This final contrast set guarantees mutual intelligibility while providing the same expressiveness as their initial versions. The two agents share their representation language, namely the [NOOS](http://www2.iiia.csic.es/Projects/Noos.html).
 
