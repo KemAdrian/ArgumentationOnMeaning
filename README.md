@@ -382,11 +382,7 @@ The communication stop, the concepts of the final contrast sets are displayed an
 
 Start by converting you own data into NOOS files, and place the three files (mydataset-ontology.noos, mydataset-dm.noos, mydatasetXcases.noos) into the Ressources/DATA/ folder.
 
-In the code, open the source folder src and find csic.iiia.ftl.learning.core and edit the class TrainingSetUtils.java.
-
-<p align="center"><div style="text-align:center"><img src="https://github.com/keminus/ArgumentationOnMeaning/blob/master/Resources/Pictures/add_in_class.png" width="75%"></div></p>
-
-After the line 470, add the index of your dataset, for example: public static final int MY_DATASET = 35;
+In the code, open the source folder src and find csic.iiia.ftl.learning.core and edit the class TrainingSetUtils.java. After the line 470, add the index of your dataset, for example: public static final int MY_DATASET = 35;
 
 <p align="center"><div style="text-align:center"><img src="https://github.com/keminus/ArgumentationOnMeaning/blob/master/Resources/Pictures/my_dataset.png" width="75%"></div></p>
 
