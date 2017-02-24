@@ -30,15 +30,15 @@ Open Eclipse and clic on File > New > Project...
 
 In the window that pops up, select Java Project and clic next.
 
-<p align="center"><div style="text-align:center"><img src="https://github.com/keminus/ArgumentationOnMeaning/tree/master/Resources/Pictures/java_project.png" width="75%"></div></p>
+<p align="center"><div style="text-align:center"><img src="https://github.com/keminus/ArgumentationOnMeaning/blob/master/Resources/Pictures/java_project.png" width="75%"></div></p>
 
 In the Project name field, enter 'ArgumentationOnMeaning' (or the name of the local folder of this repository if you changed it).
 
-<p align="center"><div style="text-align:center"><img src="https://github.com/keminus/ArgumentationOnMeaning/tree/master/Resources/Pictures/name_project.png" width="75%"></div></p>
+<p align="center"><div style="text-align:center"><img src="https://github.com/keminus/ArgumentationOnMeaning/blob/master/Resources/Pictures/name_project.png" width="75%"></div></p>
 
 Clic on Finish. The Package Explorer of Eclipse (left side by default) should look like this:
 
-<p align="center"><div style="text-align:center"><img src="https://github.com/keminus/ArgumentationOnMeaning/tree/master/Resources/Pictures/default_project.png" width="75%"></div></p>
+<p align="center"><div style="text-align:center"><img src="https://github.com/keminus/ArgumentationOnMeaning/blob/master/Resources/Pictures/default_project.png" width="75%"></div></p>
 
 (with ArgumentationOnMeaning instead of FTL).
 
@@ -97,7 +97,7 @@ Follow a little tutorial and start to work with your own data.
 
 Open the run.java script in the "scripts" package of "argumentationMeaning". Specify the SEAT_TEST dataset at the beginning of the code  and run it (white play arrow on a green button, top toolbar). Expend the console (bottom of the IDE).
 
-<p align="center"><div style="text-align:center"><img src="https://github.com/keminus/ArgumentationOnMeaning/tree/master/Resources/Pictures/select_data.png" width="75%"></div></p>
+<p align="center"><div style="text-align:center"><img src="https://github.com/keminus/ArgumentationOnMeaning/blob/master/Resources/Pictures/select_data.png" width="75%"></div></p>
 
  The script lists you the concepts of the contrast set of agent 1 and asks you if you want to merge some. Enter i to specific that you want to merge by giving the first concept's index. Then, enter the index of either "stool" or "armchair" (here, we chose stool).
 
@@ -384,14 +384,14 @@ Start by converting you own data into NOOS files, and place the three files (myd
 
 In the code, open the source folder src and find csic.iiia.ftl.learning.core and edit the class TrainingSetUtils.java.
 
-<p align="center"><div style="text-align:center"><img src="https://github.com/keminus/ArgumentationOnMeaning/tree/master/Resources/Pictures/add_in_class.png" width="75%"></div></p>
+<p align="center"><div style="text-align:center"><img src="https://github.com/keminus/ArgumentationOnMeaning/blob/master/Resources/Pictures/add_in_class.png" width="75%"></div></p>
 
 After the line 470, add the index of your dataset, for example: public static final int MY_DATASET = 35;
 
-<p align="center"><div style="text-align:center"><img src="https://github.com/keminus/ArgumentationOnMeaning/tree/master/Resources/Pictures/my_dataset.png" width="75%"></div></p>
+<p align="center"><div style="text-align:center"><img src="https://github.com/keminus/ArgumentationOnMeaning/blob/master/Resources/Pictures/my_dataset.png" width="75%"></div></p>
 
 In the method loadTrainingSet(), add the loading of your dataset in the switch. Specify the case of your dataset by indicating the path of your three files, give it a name and a problem sort and add a description and a solution path.
 
-<p align="center"><div style="text-align:center"><img src="https://github.com/keminus/ArgumentationOnMeaning/tree/master/Resources/Pictures/add_switch.png" width="75%"></div></p>
+<p align="center"><div style="text-align:center"><img src="https://github.com/keminus/ArgumentationOnMeaning/blob/master/Resources/Pictures/add_switch.png" width="75%"></div></p>
 
 Congratulation, you are now ready to test your dataset as you did in the short tutorial!
