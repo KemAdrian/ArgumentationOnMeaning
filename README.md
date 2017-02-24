@@ -12,7 +12,7 @@ Parts of the code is under copyright (see LICENCE.txt).
 
 This project has been developed using [Eclipse](https://eclipse.org/). The repository is a standard eclipse project folder. Since the code is written in [Java](https://www.java.com/fr/), any other IDE and it can be executed from a terminal in any operating system that has Java installed. However, the code has only been tested in the Eclipse environment so we recommend you to use it.
 
-## Install Java
+##Â Install Java
 
 Download the [Java Development Kit](http://www.oracle.com/technetwork/java/javase/downloads/index.html) version compatible with your OS and run the installation.
 
@@ -20,13 +20,13 @@ Download the [Java Development Kit](http://www.oracle.com/technetwork/java/javas
 
 You can download Eclipse [here](https://eclipse.org/downloads/) for a large panel of operating systems. A good tutorial for the installation is provided by the Eclipse [Wiki](https://wiki.eclipse.org/Eclipse/Installation). You should download the last Eclipse IDE for Java Developers version of the IDE.
 
-## Import the repository as a new project
+##Â Import the repository as a new project
 
 Copy your local repository folder in your current workspace. If this is the first time that you launch Eclipse, it will ask you to create a workspace. Note its direction and copy the local repository there.
 
 Open Eclipse and clic on File > New > Project...
 
-<p align="center"><div style="text-align:center"><img src="https://github.com/keminus/ArgumentationOnMeaning/tree/master/Resources/Pictures/new_project.png" width="75%"></div></p>
+<p align="center"><div style="text-align:center"><img src="https://github.com/keminus/ArgumentationOnMeaning/blob/master/Resources/Pictures/new_project.png" width="75%"></div></p>
 
 In the window that pops up, select Java Project and clic next.
 
@@ -44,7 +44,7 @@ Clic on Finish. The Package Explorer of Eclipse (left side by default) should lo
 
 # What is inside
 
-## Structure of the code
+##Â Structure of the code
 
 The project is divided between two source folders. The first one (src) contains a modified version of the FTL, having few new methods in the class ABUI allowing an easy creation for concepts in our formalism. The second one (argumentationMeaning) contains the last version of the multi-agent system and its communication and argumentation protocol.
 
@@ -64,7 +64,7 @@ You can find below a short presentation of argumentationMeaning's different pack
 
 This Ph.D aims to provide a bridge between semiotics and A.I. You can find below some basic information about the transposition of element of semiotics into our computational model. 
 
-### Semiotic elements
+###Â Semiotic elements
 
 Context, Example and Extensional definition: The different elements that an agent has perceived in its environment are called examples. For example, a specific chair from an office is an example. They are noted ei. A context E = {e1...en} is a set of examples. An extensional definition on a context is a set of examples Ei ? E.
 
@@ -72,13 +72,15 @@ Generalisation and Intensional definition: The agents are using -terms as their 
 
 Sign and Concept A sign si is an abstract entity that exists only in the communication between two agents. A concept Ci = (si,Ii,Ei) is the triadic relation between a sign, an intensional definition and an extensional definition. The relation should verify: for all ei in Ei, exists gi in Ii as gi subsumes ei.
 
-### Containers
+###Â Containers
 
 Containers are a dyadic relation between a context E and a set of concepts {C1, ..., Cn}.
-Hypothesis A hypothesis H = (E, {C1, ..., Cn}) is a container such that the set of examples {E1, ...,  En} is a subset of E and where the signs of the concepts are different:  for all Ci,Cj in {C1,...,Cn}, i is different  of j if si != sj.
-Contrast Set A contrast set K = {C1,...,Cn} is a container such that the context E is equivalent to the set of examples {E1, ... , En}, the concepts are disjoint and the signs of the concepts are different. K is a partition of E.
 
-### Relations between concepts
+Hypothesis A hypothesis H = (E, {C1, ..., Cn}) is a container such that the set of examples {E1, ...,  En} is a subset of E and where the signs of the concepts are different:  for all Ci,Cj in {C1,...,Cn}, i is different  of j if si != sj.
+
+Contrast Set A contrast set K = {C1,...,Cn} is a container such that the context E is equivalent to the set of examples {E1, ... , En}, the concepts are disjoint and the signs of the concepts are different. K is a partition of E.
+
+###Â Relations between concepts
 
 A central element of this model is the ability to compare concepts according to their respective extensional definitions. Agents are able to identify a relation from there point of view by using functions 'agree'. We identify 4 relations:
 
@@ -87,11 +89,11 @@ A central element of this model is the ability to compare concepts according to 
 * Correct : means that one extensional definitions is included in the other (strict inclusion) 
 * Incorrect : means that the intersection between the extensional definition is non-empty and neither the symmetric difference
 
-# What you can do with it
+#Â What you can do with it
 
 Follow a little tutorial and start to work with your own data.
 
-## Example: Argumentation over seats
+##Â Example: Argumentation over seats
 
 Open the run.java script in the "scripts" package of "argumentationMeaning". Specify the SEAT_TEST dataset at the beginning of the code  and run it (white play arrow on a green button, top toolbar). Expend the console (bottom of the IDE).
 
@@ -165,7 +167,7 @@ Oracle : switch roles, agent adam in defense and agent boby in attack (Initial)
    
 ```
 
-Each agent builds a hypothesis, with its concepts and the concepts that he created with the intensional definitions and signs from the other agent. He creates a table with the relations between its concepts and the concepts from the other agent. He marks its concepts' signs with * and the other agent concept's signs with °.
+Each agent builds a hypothesis, with its concepts and the concepts that he created with the intensional definitions and signs from the other agent. He creates a table with the relations between its concepts and the concepts from the other agent. He marks its concepts' signs with * and the other agent concept's signs with Â°.
 
 ```
 Oracle : switch roles, agent boby in defense and agent adam in attack (BuildHypothesisState)
@@ -188,16 +190,16 @@ Each agent then send a message to the other agent in order to inform him about t
 
 ```
 Oracle : switch roles, agent boby in defense and agent adam in attack (ExpressAgreementState)
-   > The agreement : label:chair* is a label:armchair° is Correct - has been sent
-   > The agreement : label:chair* is a label:chair° is Incorrect - has been sent
-   > The agreement : label:stool* is a label:armchair° is False - has been sent
-   > The agreement : label:stool* is a label:chair° is Correct - has been sent
+   > The agreement : label:chair* is a label:armchairÂ° is Correct - has been sent
+   > The agreement : label:chair* is a label:chairÂ° is Incorrect - has been sent
+   > The agreement : label:stool* is a label:armchairÂ° is False - has been sent
+   > The agreement : label:stool* is a label:chairÂ° is Correct - has been sent
 
 Oracle : switch roles, agent adam in defense and agent boby in attack (ExpressAgreementState)
-   > The agreement : label:chair* is a label:chair° is Incorrect - has been sent
-   > The agreement : label:armchair* is a label:stool° is False - has been sent
-   > The agreement : label:chair* is a label:stool° is Correct - has been sent
-   > The agreement : label:armchair* is a label:chair° is Correct - has been sent
+   > The agreement : label:chair* is a label:chairÂ° is Incorrect - has been sent
+   > The agreement : label:armchair* is a label:stoolÂ° is False - has been sent
+   > The agreement : label:chair* is a label:stoolÂ° is Correct - has been sent
+   > The agreement : label:armchair* is a label:chairÂ° is Correct - has been sent
 ```
 
 The agents might change the relation that they associate to the pairs of concepts according to the relation associated by the other, getting the overall relation between the concepts (the relation that would be detected if the agents were sharing their examples).
@@ -205,13 +207,13 @@ The agents might change the relation that they associate to the pairs of concept
 ```
 Oracle : switch roles, agent boby in defense and agent adam in attack (ModifyAgreementState)
    > No agreement has been changed
-{ [ label:chair* ] [ label:stool* ] }
-{ [ label:chair° ] [ label:armchair° ] }
+{Â [Â label:chair* ] [Â label:stool* ] }
+{Â [Â label:chairÂ° ] [Â label:armchairÂ° ] }
 
 Oracle : switch roles, agent adam in defense and agent boby in attack (ModifyAgreementState)
    > No agreement has been changed
-{ [ label:chair* ] [ label:armchair* ] }
-{ [ label:chair° ] [ label:stool° ] }
+{Â [Â label:chair* ] [Â label:armchair* ] }
+{Â [Â label:chairÂ° ] [Â label:stoolÂ° ] }
 ```
 
 A discussion is created about a relation (Incorrect occurs first)
@@ -219,11 +221,11 @@ A discussion is created about a relation (Incorrect occurs first)
 ```
 Oracle : switch roles, agent boby in defense and agent adam in attack (ArgumentationStartState)
    > The discussion's variables have been initialized
-   > A new discussion about label:chair* and label:chair° has been created
+   > A new discussion about label:chair* and label:chairÂ° has been created
    > The relation between the two concepts is seen as Incorrect
 
 Oracle : switch roles, agent adam in defense and agent boby in attack (ArgumentationStartState)
-   > A new discussion about label:chair* and label:chair° has been created
+   > A new discussion about label:chair* and label:chairÂ° has been created
    > The relation between the two concepts is seen as Incorrect
    
 ```
@@ -233,13 +235,13 @@ The agents try to find a new intensional definition for the examples that are in
 ```
 Oracle : switch roles, agent boby in defense and agent adam in attack (ArgumentationInitializeExtension)
 label:chair*
-label:chair°
-   > The agents will try to find a new intensional definition for examples that are both label:chair* and label:chair°
+label:chairÂ°
+   > The agents will try to find a new intensional definition for examples that are both label:chair* and label:chairÂ°
 
 Oracle : switch roles, agent adam in defense and agent boby in attack (ArgumentationInitializeExtension)
 label:chair*
-label:chair°
-   > The agents will try to find a new intensional definition for examples that are both label:chair* and label:chair°
+label:chairÂ°
+   > The agents will try to find a new intensional definition for examples that are both label:chair* and label:chairÂ°
    
 ```
 
@@ -276,16 +278,16 @@ The agents create a new concept with this intensional definition and add it to t
 
 ```
 Oracle : switch roles, agent boby in defense and agent adam in attack (WaitingAgreementState)
-   > Concept label:temp_0* and Concept label:temp_0° has been added
-{ [ label:chair* & label:armchair° = Correct ] [ label:temp_0* & label:armchair° = False ] [ label:temp_0* & label:chair° = Correct ] [ label:chair* & label:temp_0° = Correct ] [ label:temp_0* & label:temp_0° = True ] [ label:stool* & label:temp_0° = False ] [ label:stool* & label:armchair° = False ] [ label:stool* & label:chair° = Correct ] }
-{ [ label:chair* ] [ label:temp_0* ] [ label:stool* ] }
-{ [ label:temp_0° ] [ label:chair° ] [ label:armchair° ] }
+   > Concept label:temp_0* and Concept label:temp_0Â° has been added
+{Â [Â label:chair* & label:armchairÂ° = Correct ] [Â label:temp_0* & label:armchairÂ° = False ] [Â label:temp_0* & label:chairÂ° = Correct ] [Â label:chair* & label:temp_0Â° = Correct ] [Â label:temp_0* & label:temp_0Â° = True ] [Â label:stool* & label:temp_0Â° = False ] [Â label:stool* & label:armchairÂ° = False ] [Â label:stool* & label:chairÂ° = Correct ] }
+{Â [Â label:chair* ] [Â label:temp_0* ] [Â label:stool* ] }
+{Â [Â label:temp_0Â° ] [Â label:chairÂ° ] [Â label:armchairÂ° ] }
 
 Oracle : switch roles, agent adam in defense and agent boby in attack (WaitingAgreementState)
-   > Concept label:temp_0* and Concept label:temp_0° has been added
-{ [ label:armchair* & label:stool° = False ] [ label:temp_0* & label:temp_0° = True ] [ label:chair* & label:stool° = Correct ] [ label:armchair* & label:chair° = Correct ] [ label:chair* & label:temp_0° = Correct ] [ label:temp_0* & label:chair° = Correct ] [ label:temp_0* & label:stool° = False ] [ label:armchair* & label:temp_0° = False ] }
-{ [ label:temp_0* ] [ label:chair* ] [ label:armchair* ] }
-{ [ label:temp_0° ] [ label:chair° ] [ label:stool° ] }
+   > Concept label:temp_0* and Concept label:temp_0Â° has been added
+{Â [Â label:armchair* & label:stoolÂ° = False ] [Â label:temp_0* & label:temp_0Â° = True ] [Â label:chair* & label:stoolÂ° = Correct ] [Â label:armchair* & label:chairÂ° = Correct ] [Â label:chair* & label:temp_0Â° = Correct ] [Â label:temp_0* & label:chairÂ° = Correct ] [Â label:temp_0* & label:stoolÂ° = False ] [Â label:armchair* & label:temp_0Â° = False ] }
+{Â [Â label:temp_0* ] [Â label:chair* ] [Â label:armchair* ] }
+{Â [Â label:temp_0Â° ] [Â label:chairÂ° ] [Â label:stoolÂ° ] }
 ```
 
 The agents come back to the state where they discuss about the agreement of their pairs. They continue and create a new discussion about a Correct relation.
@@ -294,12 +296,12 @@ The agents come back to the state where they discuss about the agreement of thei
 Oracle : switch roles, agent boby in defense and agent adam in attack (ArgumentationStartState)
    > The discussion's variables have been initialized
    > There is a "Correct" disagreement and the problem is seen as Hyponymy
-   > A new discussion about label:stool* and label:chair° has been created
+   > A new discussion about label:stool* and label:chairÂ° has been created
    > The relation between the two concepts is seen as Correct
 
 Oracle : switch roles, agent adam in defense and agent boby in attack (ArgumentationStartState)
    > There is a "Correct" disagreement and the problem is seen as Hyperonymy
-   > A new discussion about label:chair* and label:stool° has been created
+   > A new discussion about label:chair* and label:stoolÂ° has been created
    > The relation between the two concepts is seen as Correct
 
 ```
@@ -308,15 +310,15 @@ This time the agents try to create an intensional definition for the part of the
 ```
 Oracle : switch roles, agent boby in defense and agent adam in attack (ArgumentationInitializeExtension)
 label:stool*
-label:chair°
+label:chairÂ°
    > Agent considers its concept as the Hyponymy and the other as Hyperonymy
-   > The agents will try to find a new intensional definition for examples that are label:chair° but not label:stool*
+   > The agents will try to find a new intensional definition for examples that are label:chairÂ° but not label:stool*
 
 Oracle : switch roles, agent adam in defense and agent boby in attack (ArgumentationInitializeExtension)
 label:chair*
-label:stool°
+label:stoolÂ°
    > Agent considers its concept as the Hyperonymy and the other as Hyponymy
-   > The agents will try to find a new intensional definition for examples that are label:chair* but not label:stool°
+   > The agents will try to find a new intensional definition for examples that are label:chair* but not label:stoolÂ°
    
 ```
 
@@ -346,13 +348,13 @@ Oracle : switch roles, agent boby in defense and agent adam in attack (ChangeSig
    > The winner for the vote on label:temp_2 has not been updated  (7)
    > The winner for the vote on label:temp_2 has not been updated  (7)
    >label:temp_0* has been changed for label:chair*
-   >label:temp_0° has been changed for label:chair°
+   >label:temp_0Â° has been changed for label:chairÂ°
    >label:temp_2* has been changed for label:chair*
-   >label:temp_2° has been changed for label:chair°
+   >label:temp_2Â° has been changed for label:chairÂ°
    > Stop
-{ }
-{ [ label:chair* ] [ label:chair* ] [ label:stool* ] }
-{ [ label:chair° ] [ label:stool° ] [ label:chair° ] }
+{Â }
+{Â [Â label:chair* ] [Â label:chair* ] [Â label:stool* ] }
+{Â [Â label:chairÂ° ] [Â label:stoolÂ° ] [Â label:chairÂ° ] }
 
 Oracle : switch roles, agent adam in defense and agent boby in attack (ChangeSignState)
    > A new vote started for label:temp_2* with answer label:chair (13)
@@ -362,13 +364,13 @@ Oracle : switch roles, agent adam in defense and agent boby in attack (ChangeSig
    > The winner for the vote on label:temp_2 has not been updated  (7)
    > The winner for the vote on label:temp_2 has not been updated  (7)
    >label:temp_0* has been changed for label:chair*
-   >label:temp_0° has been changed for label:chair°
+   >label:temp_0Â° has been changed for label:chairÂ°
    >label:temp_2* has been changed for label:chair*
-   >label:temp_2° has been changed for label:chair°
+   >label:temp_2Â° has been changed for label:chairÂ°
    > Stop
-{ }
-{ [ label:chair* ] [ label:stool* ] [ label:chair* ] }
-{ [ label:chair° ] [ label:chair° ] [ label:stool° ] }
+{Â }
+{Â [Â label:chair* ] [Â label:stool* ] [Â label:chair* ] }
+{Â [Â label:chairÂ° ] [Â label:chairÂ° ] [Â label:stoolÂ° ] }
 - - - - - - Display final score :
    > 100.0%
 
