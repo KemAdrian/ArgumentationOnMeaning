@@ -1,3 +1,0 @@
-# ArgumentationOnMeaning
-
-Put readme there
