@@ -16,9 +16,15 @@ import semiotic_elements.Sign;
 import tools.ExampleSetManipulation;
 import tools.Pair;
 
+/**
+ * A {@link ContrastSet} is a {@link Container} where the set of {@link Concept}s makes a partition of the context.
+ * 
+ * @author kemoadrian
+ *
+ */
 public class ContrastSet implements Container{
 	
-	public static int custom_name = 0;;
+	public static int custom_name = 0;
 	public Set<Concept> set;
 	public Set<Example> context;
 	private Scanner keyboard;
@@ -35,6 +41,9 @@ public class ContrastSet implements Container{
 		this.context = context;
 	}
 
+	/* (non-Javadoc)
+	 * @see interfaces.Container#consistent()
+	 */
 	public boolean consistent(){
 		Set<Set<Example>> all_extensional_definitions = new HashSet<Set<Example>>();
 		Set<String> all_signs = new HashSet<String>();
@@ -57,6 +66,9 @@ public class ContrastSet implements Container{
 		return ExampleSetManipulation.equivalent(to_test);
 	}
 	
+	/* (non-Javadoc)
+	 * @see interfaces.Container#getAssociatedConcepts(interfaces.SemioticElement)
+	 */
 	public Set<Concept> getAssociatedConcepts(SemioticElement se) {
 		HashSet<Concept> o = new HashSet<Concept>();
 		for (Concept c : set) {
@@ -69,14 +81,24 @@ public class ContrastSet implements Container{
 		return o;
 	}
 
+	/* (non-Javadoc)
+	 * @see interfaces.Container#getContext()
+	 */
 	public Set<Example> getContext(){
 		return this.context;
 	}
 
+	/* (non-Javadoc)
+	 * @see interfaces.Container#getAllConcepts()
+	 */
 	public Set<Concept> getAllConcepts(){
 		return this.set;
 	}
 	
+	/**
+	 * Duplicate all the {@link Concept} from own set and return them
+	 * @return a copy of the {@link Set} of {@link Concept}
+	 */
 	public Set<Concept> copyConcepts(){
 		Set<Concept> o = new HashSet<Concept>();
 		for(Concept c : this.set)
@@ -84,6 +106,10 @@ public class ContrastSet implements Container{
 		return o;
 	}
 	
+	/**
+	 * Merge two {@link Concept}. Their {@link Sign} will be asked in the console.
+	 * @return the two merged {@link Concept}
+	 */
 	public Pair<String,String> mergeConcepts(){
 		keyboard = new Scanner(System.in);
 		Random rnd = new Random();
@@ -146,6 +172,7 @@ public class ContrastSet implements Container{
 			Concept c2 = concepts.get(j);
 			c2.intensional_definition.addAll(c1.intensional_definition);
 			c2.extensional_definition.addAll(c1.extensional_definition);
+			//c2.intensional_definition = ABUI.mergedDefinition(this.context,c1,c2);
 			set.remove(c1);
 			System.out.println("Merged");
 			return new Pair<String, String>(c1.sign(), c2.sign());
@@ -153,6 +180,13 @@ public class ContrastSet implements Container{
 		return new Pair<String, String>("none", "none");
 	}
 	
+	/** Merge two given {@link Concept}. Do not merge if a parameter is invalid.
+	 * @param s1 <tt>r</tt> if the first {@link Concept} should be random, <tt>i</tt> if its index is specified as the third parameter.
+	 * @param s2 <tt>r</tt> if the second {@link Concept} should be random, <tt>i</tt> if its index is specified as the fourth parameter.
+	 * @param i1 the index of the first merged {@link Concept} if <tt>i</tt> was the first parameter.
+	 * @param i2 the index of the second merged {@link Concept} if <tt>i</tt> was the second parameter.
+	 * @return the two merged {@link Concept}
+	 */
 	public Pair<String,String> mergeConcepts(String s1, String s2, int i1, int i2){
 		Random rnd = new Random();
 		
@@ -206,6 +240,7 @@ public class ContrastSet implements Container{
 			Concept c2 = concepts.get(j);
 			c2.intensional_definition.addAll(c1.intensional_definition);
 			c2.extensional_definition.addAll(c1.extensional_definition);
+			//c2.intensional_definition = ABUI.mergedDefinition(this.context,c1,c2);
 			set.remove(c1);
 			System.out.println("Merged");
 			return new Pair<String, String>(c1.sign(), c2.sign());
@@ -213,6 +248,12 @@ public class ContrastSet implements Container{
 		return new Pair<String, String>("none", "none");
 	}
 	
+	/**
+	 * Remove a {@link Concept} from the {@link ContrastSet}.
+	 * @param s <tt>r</tt> if the {@link Concept} to remove should be random, <tt>i</tt> if its index is specified as the second parameter.
+	 * @param i1 the index of the {@link Concept} to remove if  <tt>i</tt> was the first parameter.
+	 * @return the removed {@link Concept}
+	 */
 	public String removeConcept(String s, int i1){
 		Random rnd = new Random();
 
@@ -243,6 +284,13 @@ public class ContrastSet implements Container{
 		return "";
 	}
 	
+	
+	/**
+	 * Rename a {@link Concept} from the {@link ContrastSet}.
+	 * @param s <tt>r</tt> if the {@link Concept} to rename should be random, <tt>i</tt> if its index is specified as the second parameter.
+	 * @param i1 the index of the {@link Concept} to rename if  <tt>i</tt> was the first parameter.
+	 * @return the {@link String} of the new {@link Sign} of the {@link Concept}
+	 */
 	public Pair<String,String> renameConcept(String s, int i1){
 		Random rnd = new Random();
 
@@ -277,6 +325,11 @@ public class ContrastSet implements Container{
 		}
 	}
 	
+	/**
+	 * Give the compatibility measure with the {@link Concept}s from an {@link ContrastSet}
+	 * @param cs the other {@link ContrastSet}
+	 * @return a {@link Pair} of {@link Double}. The first is the average compatibility between concepts, the second is its variance.
+	 */
 	public Pair<Double,Double> synchronicCompatibility(ContrastSet cs){
 		double n = set.size()*cs.set.size();
 		double sum = 0;
@@ -292,6 +345,11 @@ public class ContrastSet implements Container{
 		return new Pair<Double, Double>(mean, var);
 	}
 	
+	/**
+	 * Give the compatibility measure with the {@link Concept}s from an older version of this {@link ContrastSet}
+	 * @param cs older version of this {@link ContrastSet}
+	 * @return a {@link Pair} of {@link Double}. The first is the average compatibility between concepts, the second is its variance.
+	 */
 	public Pair<Double,Double> diachronicCompatibility(ContrastSet cs){
 		double n = set.size()*cs.set.size();
 		double sum = 0;
@@ -307,6 +365,11 @@ public class ContrastSet implements Container{
 		return new Pair<Double, Double>(mean, var);
 	}
 	
+	/**
+	 * Give the compatibility error with the {@link Concept}s from an {@link ContrastSet}
+	 * @param cs the other {@link ContrastSet}
+	 * @return a {@link Pair} of {@link Double}. The first is the average error between concepts, the second is its variance.
+	 */
 	public Pair<Double,Double> synchronicCompatibilityError(ContrastSet cs){
 		double n = 0;
 		double sum = 0;
@@ -326,6 +389,11 @@ public class ContrastSet implements Container{
 		return new Pair<Double, Double>(sum, var);
 	}
 	
+	/**
+	 * Give the compatibility error with the {@link Concept}s from an older version of this {@link ContrastSet}
+	 * @param cs older version of this {@link ContrastSet}
+	 * @return a {@link Pair} of {@link Double}. The first is the average error between concepts, the second is its variance.
+	 */
 	public Pair<Double,Double> diachronicCompatibilityError(ContrastSet cs){
 		double n = 0;
 		double sum = 0;
@@ -345,6 +413,11 @@ public class ContrastSet implements Container{
 		return new Pair<Double, Double>(sum, var);
 	}
 	
+	/**
+	 * Give an error measure of the uncoverend {@link Example} from the {@link Concept}s of an older version of this {@link ContrastSet}.
+	 * @param cs older version of this {@link ContrastSet}
+	 * @return a {@link Pair} of {@link Double}. The first is the average error between concepts, the second is its variance.
+	 */
 	public Pair<Double,Double> diachronicCoverageError(ContrastSet cs){
 		double n = 0;
 		double sum = 0;
@@ -370,6 +443,10 @@ public class ContrastSet implements Container{
 		return new Pair<Double, Double>(sum, var);
 	}
 	
+	
+	/** Format the {@link Example}s of the {@link ContrastSet} and return it as a {@link List} ready to be saved in a file.
+	 * @return the {@link List} of all this {@link ContrastSet}'s examples.
+	 */
 	public List<String> saveInFile(){
 		LinkedList<String> o = new LinkedList<>();
 		for(Concept c : set){

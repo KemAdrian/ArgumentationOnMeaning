@@ -34,9 +34,10 @@ import tools.ExampleSetManipulation;
 import tools.LearningPackage;
 
 /**
- * @author kemoadrian
  * The discussion is a {@link Container} that interfaces two {@link Agent}s during an argumentations.
  * The class creates all the variables necessary to lauch and run a successful instance of {@link AMAIL}.
+ *  
+ * @author kemoadrian
  */
 
 public class Discussion implements Container {
@@ -161,6 +162,9 @@ public class Discussion implements Container {
 	}
 	
 	
+	/**
+	 *  Create the extensional definition of the {@link Concept} that this {@link Agent} wants to create with this {@link Discussion}.
+	 */
 	public void extensionalInitialization(){
 		
 		// Eventually change the name of one sign 
@@ -324,6 +328,10 @@ public class Discussion implements Container {
 		}
 	}
 	
+	/**
+	 * Executing a tentative to solve the current disagreement over the meaning in the scenarios where the solving requires a new {@link Concept}.
+	 * @param h the {@link Hypothesis} with the {@link Concept}s used in this {@link Discussion}.
+	 */
 	public void argumentation(Hypothesis h){
 		
 		if(solved){
@@ -417,24 +425,39 @@ public class Discussion implements Container {
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString(){
 		return concept1+"__"+concept2;
 	}
 	
+	/* (non-Javadoc)
+	 * @see interfaces.Container#consistent()
+	 */
 	public boolean consistent() {
 		return amail.moreRoundsP();
 	}
 	
+	/* (non-Javadoc)
+	 * @see interfaces.Container#getContext()
+	 */
 	public Set<Example> getContext() {
 		return context;
 	}
 	
+	/* (non-Javadoc)
+	 * @see interfaces.Container#getAllConcepts()
+	 */
 	public Set<Concept> getAllConcepts() {
 		Set<Concept> output = new HashSet<>();
 		output.add(the_solution);
 		return output;
 	}
 	
+	/* (non-Javadoc)
+	 * @see interfaces.Container#getAssociatedConcepts(interfaces.SemioticElement)
+	 */
 	public Set<Concept> getAssociatedConcepts(SemioticElement se) {
 		Set<Concept> output = new HashSet<>();
 		try {
@@ -446,6 +469,11 @@ public class Discussion implements Container {
 		return output;
 	}
 	
+	/**
+	 * Suppress the marks used to identify the {@link Agent} of origin of each {@link Concept}s, in an {@link Agent}'s {@link Sign}.
+	 * @param s the {@link String} of the {@link Sign}.
+	 * @return the same {@link String} with the marks removed.
+	 */
 	public String cleanMark(String s){
 		return s.replace("°","").replace("*","");
 	}
@@ -474,6 +502,10 @@ public class Discussion implements Container {
 		return s2;
 	}
 	
+	/**
+	 * Get the point of fiew of this {@link Agent} about the hierarchy between the two {@link Concept}s discussed, in the case of a {@value Correct} relation.
+	 * @return the assumed {@link Hierarchy}.
+	 */
 	public Hierarchy problemKind(){
 		if(ExampleSetManipulation.excluContains(concept1.extensional_definition, concept2.extensional_definition))
 			return Hierarchy.Hyperonymy;
@@ -482,6 +514,11 @@ public class Discussion implements Container {
 		return Hierarchy.Blind;
 	}
 	
+	/**
+	 * Get the opposite {@link Hierarchy} from the one given in parameter.
+	 * @param k the {@link Hierarchy} from which the opposite is needed.
+	 * @return the needed {@link Hierarchy}.
+	 */
 	public Hierarchy reverseHierarchy(Hierarchy k){
 		switch (k) {
 		case Hyperonymy:
@@ -491,9 +528,6 @@ public class Discussion implements Container {
 		default:
 			return null;
 		}
-	}
-	
-	public void putLabel(Set<Example> tRED, Set<Example> ntRED){
 	}
 
 }

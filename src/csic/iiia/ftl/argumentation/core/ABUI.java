@@ -29,6 +29,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import containers.ContrastSet;
 import csic.iiia.ftl.base.core.FTAntiunification;
@@ -38,6 +39,7 @@ import csic.iiia.ftl.base.core.FeatureTerm;
 import csic.iiia.ftl.base.core.Ontology;
 import csic.iiia.ftl.base.core.Path;
 import csic.iiia.ftl.base.core.Symbol;
+import csic.iiia.ftl.base.core.TermFeatureTerm;
 import csic.iiia.ftl.base.utils.FeatureTermException;
 import csic.iiia.ftl.learning.core.Hypothesis;
 import csic.iiia.ftl.learning.core.Rule;
@@ -764,6 +766,57 @@ public class ABUI extends ArgumentationBasedLearning {
 		}
 		ContrastSet cset = new ContrastSet(concepts,context);
 		return cset;
+	}
+
+	public static Set<Generalization> mergedDefinition(Set<Example> context, Concept c1, Concept c2) {
+		
+		ABUI learner = new ABUI();
+		
+		HashSet<Generalization> intensionalDefinition = new HashSet<Generalization>();
+		Set<FeatureTerm> extensionalDefinition = new HashSet<FeatureTerm>();
+		Set<FeatureTerm> solutions = new HashSet<FeatureTerm>();
+		
+		FeatureTerm notSolutionToken = null;
+		FeatureTerm solutionToken = null;
+		
+		try {
+			notSolutionToken = new TermFeatureTerm(new Symbol("not_the_solution"), LearningPackage.solution_sort());
+			LearningPackage.dm().addFT(notSolutionToken);
+			solutions.add(notSolutionToken);
+			solutionToken = new TermFeatureTerm(new Symbol("the_solution"), LearningPackage.solution_sort());
+			LearningPackage.dm().addFT(solutionToken);
+			solutions.add(solutionToken);
+		} catch (FeatureTermException e) {
+			e.printStackTrace();
+		}
+		
+		for(Example e : context){
+			try {
+				if(c1.covers(e) || c2.covers(e)){
+					FeatureTerm f = LearningPackage.createFeature(e.featureterm, solutionToken);
+					extensionalDefinition.add(f);
+				}
+				else{
+					FeatureTerm f = LearningPackage.createFeature(e.featureterm, notSolutionToken);
+					extensionalDefinition.add(f);
+				}
+			} catch (FeatureTermException e1) {
+				e1.printStackTrace();
+			}
+		}
+		
+		List<Argument> arguments = new ArrayList<Argument>();
+		ArgumentAcceptability aa = new LaplaceArgumentAcceptability(extensionalDefinition, LearningPackage.solution_path(), LearningPackage.description_path(), (float)0.75);
+		
+		try {
+			for(Rule r : learner.learnConceptABUI(extensionalDefinition, solutions, arguments, aa, LearningPackage.description_path(), LearningPackage.solution_path(), LearningPackage.ontology(), LearningPackage.dm()).getRules()){
+				intensionalDefinition.add(new Generalization(r.pattern));
+			}
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		
+		return intensionalDefinition;
 	}
 
 }

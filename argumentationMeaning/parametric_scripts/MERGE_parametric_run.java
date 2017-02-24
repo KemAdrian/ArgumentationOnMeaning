@@ -18,13 +18,32 @@ import csic.iiia.ftl.base.core.TermFeatureTerm;
 import csic.iiia.ftl.learning.core.TrainingSetProperties;
 import csic.iiia.ftl.learning.core.TrainingSetUtils;
 import enumerators.Phase;
+import semiotic_elements.Concept;
+import semiotic_elements.Example;
 import tools.ExampleSetManipulation;
 import tools.LearningPackage;
 import tools.Pair;
 import tools.Token;
 
+/**
+ * This script creates an argumentation between two {@link Agent_simple}.
+ * One of them does not make the distinction between two of the other {@link Agent_simple}'s {@link Concept}.
+ * The results are saved in different files at the root of the repository.
+ * 
+ * @author kemoadrian
+ *
+ */
 public class MERGE_parametric_run {
 	
+	/**
+	 * Gives the result of the argumentation in files at the root of the repository.
+	 * 
+	 * @param test_set the index of the NOOS dataset from {@link TrainingSetUtils}.
+	 * @param redundancy make copies of some entry in the dataset to extend it.
+	 * @param errorValue allows a tolerance toward the equivalence between two sets of {@link Example}. At 0, the two sets have to be equals. At 1, they are considered as equals even if they are totally disjoint. 
+	 * @param ex the index of the experiment, in the case of multiple experiments runned at the same time.
+	 * @throws Exception
+	 */
 	public static void run(int test_set, double redundancy, double errorValue, int ex) throws Exception {
 
 		// Opening of the Cases Set

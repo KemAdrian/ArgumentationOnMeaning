@@ -31,8 +31,27 @@ import tools.ExampleSetManipulation;
 import tools.LearningPackage;
 import tools.Pair;
 
+/**
+ * This script creates an argumentation between two {@link Agent_simple}.
+ * One of them does not make the distinction between two of the other {@link Agent_simple}'s {@link Concept}.
+ * The results are saved in different files at the root of the repository.
+ * 
+ * This version tries to use only AMAIL and will not work most of the time.
+ * 
+ * @author kemoadrian
+ *
+ */
 public class MERGE_amail {
 	
+	/**
+	 * Gives the result of the argumentation in files at the root of the repository.
+	 * 
+	 * @param test_set the index of the NOOS dataset from {@link TrainingSetUtils}.
+	 * @param redundancy make copies of some entry in the dataset to extend it.
+	 * @param errorValue allows a tolerance toward the equivalence between two sets of {@link Example}. At 0, the two sets have to be equals. At 1, they are considered as equals even if they are totally disjoint. 
+	 * @param ex the index of the experiment, in the case of multiple experiments runned at the same time.
+	 * @throws Exception
+	 */
 	public static void main(String[] args) throws Exception {
 
 		// Opening of the Cases Set

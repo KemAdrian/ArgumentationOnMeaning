@@ -23,9 +23,9 @@ public class run {
 	public static void main(String[] args) throws Exception {
 
 		// Opening of the Cases Set
-		int TEST = TrainingSetUtils.SOYBEAN_DATASET;
+		int TEST = TrainingSetUtils.DEMOSPONGIAE_120_DATASET;
 		
-		ExampleSetManipulation.error = 0.275;
+		ExampleSetManipulation.error = 0.2;
 
 		Ontology base_ontology;
 		Ontology o = new Ontology();
