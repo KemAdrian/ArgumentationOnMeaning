@@ -48,7 +48,7 @@ Clic on Finish. The Package Explorer of Eclipse (left side by default) should lo
 
 The project is divided between two source folders. The first one (src) contains a modified version of the FTL, having few new methods in the class ABUI allowing an easy creation for concepts in our formalism. The second one (argumentationMeaning) contains the last version of the multi-agent system and its communication and argumentation protocol.
 
-You can find below a short presentation of argumentationMeaning's different packages. More information about the this source folder is available in the [Javadoc]().
+You can find below a short presentation of argumentationMeaning's different packages. More information about the this source folder is available in the [Javadoc](https://github.com/keminus/ArgumentationOnMeaning/tree/master/Javadoc).
 
 * agents : the different classes of agents.
 * containers : the classes for collections of concepts
