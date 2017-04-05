@@ -1,4 +1,4 @@
-#Two-agent System Arguing about the Meaning in order to Build Contrast Sets over Heterogeneous NOOS Datasets
+# Two-agent System Arguing about the Meaning in order to Build Contrast Sets over Heterogeneous NOOS Datasets
 
 A framework based on the [FTL](https://github.com/santiontanon/fterm) library. Two agents build contrast sets (knowledge representations associated to a vocabulary) that is initially unable to guarantee mutual intelligibility. Through argumentation over the concepts that compose the contrast set, the agents build a new version of their initial contrast set. This final contrast set guarantees mutual intelligibility while providing the same expressiveness as their initial versions. The two agents share their representation language, namely the [NOOS](http://www2.iiia.csic.es/Projects/Noos.html).
 
@@ -12,7 +12,7 @@ Parts of the code is under copyright (see LICENCE.txt).
 
 This project has been developed using [Eclipse](https://eclipse.org/). The repository is a standard eclipse project folder. Since the code is written in [Java](https://www.java.com/fr/), any other IDE and it can be executed from a terminal in any operating system that has Java installed. However, the code has only been tested in the Eclipse environment so we recommend you to use it.
 
-## Install Java
+## Install Java
 
 Download the [Java Development Kit](http://www.oracle.com/technetwork/java/javase/downloads/index.html) version compatible with your OS and run the installation.
 
@@ -20,7 +20,7 @@ Download the [Java Development Kit](http://www.oracle.com/technetwork/java/javas
 
 You can download Eclipse [here](https://eclipse.org/downloads/) for a large panel of operating systems. A good tutorial for the installation is provided by the Eclipse [Wiki](https://wiki.eclipse.org/Eclipse/Installation). You should download the last Eclipse IDE for Java Developers version of the IDE.
 
-## Import the repository as a new project
+## Import the repository as a new project
 
 Copy your local repository folder in your current workspace. If this is the first time that you launch Eclipse, it will ask you to create a workspace. Note its direction and copy the local repository there.
 
@@ -44,7 +44,7 @@ Clic on Finish. The Package Explorer of Eclipse (left side by default) should lo
 
 # What is inside
 
-## Structure of the code
+## Structure of the code
 
 The project is divided between two source folders. The first one (src) contains a modified version of the FTL, having few new methods in the class ABUI allowing an easy creation for concepts in our formalism. The second one (argumentationMeaning) contains the last version of the multi-agent system and its communication and argumentation protocol.
 
@@ -64,7 +64,7 @@ You can find below a short presentation of argumentationMeaning's different pack
 
 This Ph.D aims to provide a bridge between semiotics and A.I. You can find below some basic information about the transposition of element of semiotics into our computational model. 
 
-### Semiotic elements
+### Semiotic elements
 
 Context, Example and Extensional definition: The different elements that an agent has perceived in its environment are called examples. For example, a specific chair from an office is an example. They are noted ei. A context E = {e1...en} is a set of examples. An extensional definition on a context is a set of examples Ei ? E.
 
@@ -72,7 +72,7 @@ Generalisation and Intensional definition: The agents are using -terms as their 
 
 Sign and Concept A sign si is an abstract entity that exists only in the communication between two agents. A concept Ci = (si,Ii,Ei) is the triadic relation between a sign, an intensional definition and an extensional definition. The relation should verify: for all ei in Ei, exists gi in Ii as gi subsumes ei.
 
-### Containers
+### Containers
 
 Containers are a dyadic relation between a context E and a set of concepts {C1, ..., Cn}.
 
@@ -80,7 +80,7 @@ Hypothesis A hypothesis H = (E, {C1, ..., Cn}) is a container such that the set 
 
 Contrast Set A contrast set K = {C1,...,Cn} is a container such that the context E is equivalent to the set of examples {E1, ... , En}, the concepts are disjoint and the signs of the concepts are different. K is a partition of E.
 
-### Relations between concepts
+### Relations between concepts
 
 A central element of this model is the ability to compare concepts according to their respective extensional definitions. Agents are able to identify a relation from there point of view by using functions 'agree'. We identify 4 relations:
 
@@ -89,11 +89,11 @@ A central element of this model is the ability to compare concepts according to 
 * Correct : means that one extensional definitions is included in the other (strict inclusion) 
 * Incorrect : means that the intersection between the extensional definition is non-empty and neither the symmetric difference
 
-# What you can do with it
+# What you can do with it
 
 Follow a little tutorial and start to work with your own data.
 
-## Example: Argumentation over seats
+## Example: Argumentation over seats
 
 Open the run.java script in the "scripts" package of "argumentationMeaning". Specify the SEAT_TEST dataset at the beginning of the code  and run it (white play arrow on a green button, top toolbar). Expend the console (bottom of the IDE).
 
